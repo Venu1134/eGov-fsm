@@ -17,6 +17,7 @@ public class EmployeeLoginPageTest extends BaseClass {
 	}
 	
 	public WebDriver driver;
+	String testcase;
 	EmployeeLoginPage employeeLoginPage;
 	EmployeeHomePage employeehomePage;
 	
@@ -33,10 +34,49 @@ public class EmployeeLoginPageTest extends BaseClass {
 	
 	@Test
 	public void FSM_TC_Login_002(){
+		testcase = "Check Employee is able to login with valid username, valid password and valid city";
 		employeeLoginPage.enterLoginCredentials(prop.getProperty("Username"), prop.getProperty("Password"), prop.getProperty("City"));
 		employeehomePage = employeeLoginPage.clickOnContinueButton();
 		Assert.assertEquals(employeehomePage.getHomePageURL(), testDataProp.getProperty("EmployeeHomePageURL"));
 	}
-
 	
+	@Test
+	public void FSM_TC_Login_003() {
+		testcase = "Check Employee is able to login with valid username, valid password and invalid city";
+		employeeLoginPage.enterLoginCredentials(prop.getProperty("Username"), prop.getProperty("Password"), testDataProp.getProperty("InvalidCity"));
+		employeeLoginPage.clickOnContinueButton();
+		Assert.assertEquals(employeeLoginPage.validateErrorMessage(), testDataProp.getProperty("InvalidErrorMessage"));
+	}
+	
+	@Test
+	public void FSM_TC_Login_004() {
+		testcase = "Check Employee is able to login with valid username, invalid password and valid city";
+		employeeLoginPage.enterLoginCredentials(prop.getProperty("Username"), testDataProp.getProperty("InvalidPassword"), prop.getProperty("City"));
+		employeeLoginPage.clickOnContinueButton();
+		Assert.assertEquals(employeeLoginPage.validateErrorMessage(), testDataProp.getProperty("InvalidErrorMessage"));
+	}
+	
+	@Test
+	public void FSM_TC_Login_005() {
+		testcase = "Check Employee is able to login with invalid username, valid password and valid city";
+		employeeLoginPage.enterLoginCredentials(testDataProp.getProperty("InvalidUsername"), prop.getProperty("Password"), prop.getProperty("City"));
+		employeeLoginPage.clickOnContinueButton();
+		Assert.assertEquals(employeeLoginPage.validateErrorMessage(), testDataProp.getProperty("InvalidErrorMessage"));
+	}
+	
+	@Test
+	public void FSM_TC_Login_006() {
+		testcase = "Check Employee is able to login with invalid username, invalid password and valid city";
+		employeeLoginPage.enterLoginCredentials(testDataProp.getProperty("InvalidUsername"), testDataProp.getProperty("InvalidPassword"), prop.getProperty("City"));
+		employeeLoginPage.clickOnContinueButton();
+		Assert.assertEquals(employeeLoginPage.validateErrorMessage(), testDataProp.getProperty("InvalidErrorMessage"));
+	}
+	
+	@Test
+	public void FSM_TC_Login_007() {
+		testcase = "Check Employee is able to login with invalid username, invalid password and invalid city";
+		employeeLoginPage.enterLoginCredentials(testDataProp.getProperty("InvalidUsername"), testDataProp.getProperty("InvalidPassword"), testDataProp.getProperty("InvalidCity"));
+		employeeLoginPage.clickOnContinueButton();
+		Assert.assertEquals(employeeLoginPage.validateErrorMessage(), testDataProp.getProperty("InvalidErrorMessage"));
+	}
 }

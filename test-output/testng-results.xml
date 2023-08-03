@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="5" total="6" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-03T13:25:52 IST" name="Default suite" finished-at="2023-08-03T13:25:59 IST" duration-ms="6836">
+  <suite started-at="2023-08-03T15:12:06 IST" name="Default suite" finished-at="2023-08-03T15:12:13 IST" duration-ms="6881">
     <groups>
     </groups>
-    <test started-at="2023-08-03T13:25:52 IST" name="Default test" finished-at="2023-08-03T13:25:59 IST" duration-ms="6836">
+    <test started-at="2023-08-03T15:12:06 IST" name="Default test" finished-at="2023-08-03T15:12:13 IST" duration-ms="6881">
       <class name="com.fsm.tests.EmployeeLoginPageTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.fsm.tests.EmployeeLoginPageTest@55182842]" started-at="2023-08-03T13:25:52 IST" name="setUp" finished-at="2023-08-03T13:25:57 IST" duration-ms="4530" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.fsm.tests.EmployeeLoginPageTest@76505305]" started-at="2023-08-03T15:12:06 IST" name="setUp" finished-at="2023-08-03T15:12:11 IST" duration-ms="4768" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="FSM_TC_Login_002()[pri:0, instance:com.fsm.tests.EmployeeLoginPageTest@55182842]" started-at="2023-08-03T13:25:57 IST" name="FSM_TC_Login_002" finished-at="2023-08-03T13:25:58 IST" duration-ms="1799" status="PASS">
+        <test-method signature="FSM_TC_Login_007()[pri:0, instance:com.fsm.tests.EmployeeLoginPageTest@76505305]" started-at="2023-08-03T15:12:11 IST" name="FSM_TC_Login_007" finished-at="2023-08-03T15:12:12 IST" duration-ms="1375" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- FSM_TC_Login_002 -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.fsm.tests.EmployeeLoginPageTest@55182842]" started-at="2023-08-03T13:25:58 IST" name="tearDown" finished-at="2023-08-03T13:25:59 IST" duration-ms="461" status="PASS">
+        </test-method> <!-- FSM_TC_Login_007 -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.fsm.tests.EmployeeLoginPageTest@76505305]" started-at="2023-08-03T15:12:12 IST" name="tearDown" finished-at="2023-08-03T15:12:13 IST" duration-ms="690" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

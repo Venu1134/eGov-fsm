@@ -14,57 +14,69 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class EmployeeLoginPage {
 
 	WebDriver driver;
+
 	public EmployeeLoginPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(id="employee-phone")
+
+	@FindBy(id = "employee-phone")
 	private WebElement Username;
+
 	public void enterUsername(String username) {
 		Username.sendKeys(username);
 	}
-	
-	@FindBy(id="employee-password")
+
+	@FindBy(id = "employee-password")
 	private WebElement Password;
+
 	public void enterPassword(String password) {
 		Password.sendKeys(password);
 	}
-	
-	@FindBy(id="person-city")
+
+	@FindBy(id = "person-city")
 	private WebElement City;
-	@FindBy(xpath="//*[@class='list-main-card']//span")
+	@FindBy(xpath = "//*[@class='list-main-card']//span")
 	private List<WebElement> CityLists;
+
 	public void selectCity(String city) {
 		City.click();
-		
-		for(WebElement cityList:CityLists) {
-			if(cityList.getText().equalsIgnoreCase(city)) {
-				cityList.click();
-				break;
-			}
-			break;
-		}
-	}
-	
-	@FindBy(id="login-submit-action")
-	private WebElement ContinueButton;
-	public EmployeeHomePage clickOnContinueButton() {
-		ContinueButton.click();
-		return new EmployeeHomePage(driver);
-	}
-	
-	public void enterLoginCredentials(String username, String password, String city) {
-		Username.sendKeys(username);
-		Password.sendKeys(password);
-		City.click();
-		for(int i=0; i<CityLists.size();i++) {
+
+		for (int i = 0; i < CityLists.size(); i++) {
 			String actualCity = CityLists.get(i).getText();
-			System.out.println("actualCity : "+actualCity);
-			if(actualCity.equalsIgnoreCase(city)) {
+			System.out.println("actualCity : " + actualCity);
+			if (actualCity.equalsIgnoreCase(city)) {
 				CityLists.get(i).click();
 				break;
 			}
 		}
+	}
+
+	@FindBy(id = "login-submit-action")
+	private WebElement ContinueButton;
+
+	public EmployeeHomePage clickOnContinueButton() {
+		ContinueButton.click();
+		return new EmployeeHomePage(driver);
+	}
+
+	public void enterLoginCredentials(String username, String password, String city) {
+		Username.sendKeys(username);
+		Password.sendKeys(password);
+		City.click();
+		for (int i = 0; i < CityLists.size(); i++) {
+			String actualCity = CityLists.get(i).getText();
+			//System.out.println("actualCity : " + actualCity);
+			if (actualCity.equalsIgnoreCase(city)) {
+				CityLists.get(i).click();
+				break;
+			}
+		}
+	}
+
+	@FindBy(xpath = "//*[@id='client-snackbar']/div")
+	private WebElement ErrorMessage;
+	public String validateErrorMessage() {
+		return ErrorMessage.getText();
 	}
 }
