@@ -2,6 +2,7 @@ package com.fsm.baseClass;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.util.Properties;
 
@@ -16,17 +17,29 @@ import com.fsm.utilities.UtilityClass;
 public class BaseClass {
 
 	public Properties prop;
+	public Properties testDataProp;
 	public WebDriver driver;
 
 	public BaseClass() {
 		prop = new Properties();
-		File file = new File(System.getProperty("user.dir") + "");
+		File file = new File(System.getProperty("user.dir") + "\\src\\main\\java\\com\\fsm\\configs\\configs.properties");
 		try {
 			FileInputStream fis = new FileInputStream(file);
 			prop.load(fis);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		testDataProp = new Properties();
+		File testFile = new File(System.getProperty("user.dir")+"\\src\\main\\java\\com\\fsm\\testData\\testData.properties");
+		FileInputStream fis;
+		try {
+			fis = new FileInputStream(testFile);
+			testDataProp.load(fis);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public WebDriver initilizeBrowser(String browser) {

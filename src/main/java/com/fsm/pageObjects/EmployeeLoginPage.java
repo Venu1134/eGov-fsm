@@ -1,11 +1,15 @@
 package com.fsm.pageObjects;
 
+import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class EmployeeLoginPage {
 
@@ -54,12 +58,13 @@ public class EmployeeLoginPage {
 		Username.sendKeys(username);
 		Password.sendKeys(password);
 		City.click();
-		for(WebElement cityList:CityLists) {
-			if(cityList.getText().equalsIgnoreCase(city)) {
-				cityList.click();
+		for(int i=0; i<CityLists.size();i++) {
+			String actualCity = CityLists.get(i).getText();
+			System.out.println("actualCity : "+actualCity);
+			if(actualCity.equalsIgnoreCase(city)) {
+				CityLists.get(i).click();
 				break;
 			}
-			break;
 		}
 	}
 }

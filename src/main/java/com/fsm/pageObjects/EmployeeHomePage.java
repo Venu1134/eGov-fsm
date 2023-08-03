@@ -1,7 +1,11 @@
 package com.fsm.pageObjects;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class EmployeeHomePage {
 
@@ -11,12 +15,9 @@ public class EmployeeHomePage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public boolean getHomePageURL(String expectedURL) {
-		boolean actualStatus = false;
-		String actualURL = driver.getCurrentUrl();
-		if(actualURL.equals(expectedURL)) {
-			actualStatus =  true;
-		}
-		return actualStatus;
+	public String getHomePageURL() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.urlContains("/inbox"));
+		return driver.getCurrentUrl();
 	}
 }
